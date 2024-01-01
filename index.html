@@ -4,26 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MerryChristMast</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/vi.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .positionImg img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .countdown-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #days-count {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        #event-name {
+            font-size: 18px;
+            color: #666;
+        }
+
+        #calendar {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="positionImg">
-            <img src="https://i.pinimg.com/564x/a3/1d/22/a31d225eac99c609ea14711b8fd3c1f3.jpg" alt="">
-        </div>
+   
         <div class="countdown-container">
             <p id="days-count"></p>
             <p id="event-name"></p>
         </div>
+        <div id="calendar"></div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script>
         // Ngày bắt đầu yêu
-        var startDate = moment('2022-01-01'); // Điền ngày bắt đầu yêu ở đây
+        var startDate = moment('2023-11-01'); // Điền ngày bắt đầu yêu ở đây
 
         // Ngày sự kiện (ví dụ: Tết)
-        var eventDate = moment('2023-01-01'); // Điền ngày sự kiện ở đây
+        var eventDate = moment('2024-01-01'); // Điền ngày sự kiện ở đây
 
         // Tính số ngày yêu
         var daysCount = eventDate.diff(startDate, 'days');
@@ -31,6 +77,24 @@
         // Hiển thị thông tin
         document.getElementById('days-count').innerText = 'Số ngày yêu: ' + daysCount + ' ngày';
         document.getElementById('event-name').innerText = 'Sự kiện đến: ' + eventDate.format('MMMM Do, YYYY');
+
+        // Hiển thị bảng lịch
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                events: [
+                    // Thêm sự kiện lịch ở đây (nếu cần)
+                ],
+                locale: 'vi',
+                defaultDate: moment(),
+                editable: false,
+                eventLimit: true,
+            });
+        });
     </script>
 </body>
 </html>
