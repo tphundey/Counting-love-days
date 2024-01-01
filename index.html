@@ -8,9 +8,29 @@
 </head>
 <body>
     <div class="container">
-       <div class="postionImg">
-        <img src="https://i.pinimg.com/564x/a3/1d/22/a31d225eac99c609ea14711b8fd3c1f3.jpg" alt="">
-       </div>
+        <div class="positionImg">
+            <img src="https://i.pinimg.com/564x/a3/1d/22/a31d225eac99c609ea14711b8fd3c1f3.jpg" alt="">
+        </div>
+        <div class="countdown-container">
+            <p id="days-count"></p>
+            <p id="event-name"></p>
+        </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script>
+        // Ngày bắt đầu yêu
+        var startDate = moment('2022-01-01'); // Điền ngày bắt đầu yêu ở đây
+
+        // Ngày sự kiện (ví dụ: Tết)
+        var eventDate = moment('2023-01-01'); // Điền ngày sự kiện ở đây
+
+        // Tính số ngày yêu
+        var daysCount = eventDate.diff(startDate, 'days');
+
+        // Hiển thị thông tin
+        document.getElementById('days-count').innerText = 'Số ngày yêu: ' + daysCount + ' ngày';
+        document.getElementById('event-name').innerText = 'Sự kiện đến: ' + eventDate.format('MMMM Do, YYYY');
+    </script>
 </body>
 </html>
